@@ -124,7 +124,7 @@ export const YourFieldConfig: FieldConfig = {
 完成 component 後，執行建置指令：
 
 ```bash
-npm run registry:build
+yarn registry:build
 ```
 
 這會產生 JSON 檔案到 `public/r/your-field-name.json`
@@ -177,6 +177,6 @@ App 會展示以下資訊方便開發測試：
 ## 🛠️ 開發環境
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn run dev
 ```
