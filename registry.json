@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Maxnion Form Field Registry",
+  "homepage": "https://maxnion.com",
+  "items": [
+    {
+      "name": "maxnion-select-field",
+      "type": "registry:component",
+      "title": "Maxnion Select Field",
+      "description": "A Maxnion select field component example",
+      "dependencies": ["lucide-react", "react-hook-form", "json-schema"],
+      "registryDependencies": ["input", "select", "button"],
+      "files": [
+        {
+          "path": "registry/maxnion-select-field/index.ts",
+          "type": "registry:component",
+          "target": "maxnion/form/select-field/index.ts"
+        },
+        {
+          "path": "registry/maxnion-select-field/MaxnionSelectField.tsx",
+          "type": "registry:component",
+          "target": "maxnion/form/select-field/MaxnionSelectField.tsx"
+        },
+        {
+          "path": "registry/maxnion-select-field/devTypes.ts",
+          "type": "registry:component",
+          "target": "maxnion/form/select-field/devTypes.ts"
+        }
+      ]
+    }
+  ]
+}

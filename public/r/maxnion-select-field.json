@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "maxnion-select-field",
+  "type": "registry:component",
+  "title": "Maxnion Select Field",
+  "description": "A Maxnion select field component example",
+  "dependencies": [
+    "lucide-react",
+    "react-hook-form",
+    "json-schema"
+  ],
+  "registryDependencies": [
+    "input",
+    "select",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/maxnion-select-field/index.ts",
+      "content": "import { List } from 'lucide-react';\nimport { MaxnionSelectField } from './MaxnionSelectField';\nimport type { FieldConfig } from './devTypes';\n\nexport const MaxnionSelectFieldConfig: FieldConfig = {\n  meta: {\n    typeLabel: 'Maxnion Select',\n    icon: List,\n  },\n  createInitialSchema: () => ({\n    title: '欄位1',\n    type: 'string',\n    enum: ['選項1'],\n    default: '選項1',\n  }),\n  createInitialUiSchema: () => ({\n    'ui:placeholder': '請選擇一個選項',\n  }),\n  component: MaxnionSelectField,\n};\n",
+      "type": "registry:component",
+      "target": "maxnion/form/select-field/index.ts"
+    },
+    {
+      "path": "registry/maxnion-select-field/MaxnionSelectField.tsx",
+      "content": "import { Input } from '@/components/ui/input';\nimport {\n  Select,\n  SelectTrigger,\n  SelectValue,\n  SelectContent,\n  SelectItem,\n} from '@/components/ui/select';\nimport { Button } from '@/components/ui/button';\nimport { Trash2 } from 'lucide-react';\nimport type { FieldProps } from './devTypes';\n\nexport const MaxnionSelectField = (props: FieldProps) => {\n  const {\n    mode,\n    value,\n    onChange,\n    schema,\n    onSchemaChange,\n    uiSchema,\n    onUiSchemaChange,\n  } = props;\n  const options = schema?.enum || [];\n  const placeholder = uiSchema?.['ui:placeholder'];\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      {/* header */}\n      <div className=\"flex flex-col gap-2\">\n        <h4 className=\"text-muted-foreground text-sm\">欄位名稱</h4>\n        <Input\n          value={schema.title}\n          onChange={e => {\n            onSchemaChange?.({\n              ...schema,\n              title: e.target.value,\n            });\n          }}\n          readOnly={mode === 'edit' || mode === 'readOnly'}\n        />\n      </div>\n\n      {/* field component */}\n      <div className=\"flex flex-col gap-2\">\n        <h4 className=\"text-muted-foreground text-sm\">欄位元件</h4>\n        <Select\n          value={value as string}\n          onValueChange={onChange}\n          disabled={mode === 'builder' || mode === 'readOnly'}>\n          <SelectTrigger>\n            <SelectValue placeholder={(placeholder as string) || '請選擇'} />\n          </SelectTrigger>\n          <SelectContent>\n            {options.map(option => (\n              <SelectItem key={option as string} value={option as string}>\n                {option as string}\n              </SelectItem>\n            ))}\n          </SelectContent>\n        </Select>\n      </div>\n\n      {/* schema editor */}\n      {mode === 'builder' && (\n        <div className=\"flex flex-col gap-4 rounded-lg border p-4\">\n          <div className=\"flex flex-col gap-2\">\n            <h4 className=\"text-muted-foreground text-sm\">選項設定</h4>\n            {options.map((option, index) => (\n              <div key={index} className=\"flex gap-2\">\n                <Input\n                  value={option as string}\n                  onChange={e => {\n                    onSchemaChange?.({\n                      ...schema,\n                      enum: [\n                        ...options.slice(0, index),\n                        e.target.value,\n                        ...options.slice(index + 1),\n                      ],\n                    });\n                  }}\n                />\n                <Button\n                  variant=\"outline\"\n                  onClick={() => {\n                    onSchemaChange?.({\n                      ...schema,\n                      enum: [\n                        ...options.slice(0, index),\n                        ...options.slice(index + 1),\n                      ],\n                    });\n                  }}>\n                  <Trash2 />\n                </Button>\n              </div>\n            ))}\n            <div className=\"flex gap-2\">\n              <Button\n                variant=\"outline\"\n                onClick={() => {\n                  onSchemaChange?.({\n                    ...schema,\n                    enum: [...options, `選項${options.length + 1}`],\n                  });\n                }}>\n                新增\n              </Button>\n            </div>\n          </div>\n\n          <div className=\"flex flex-col gap-2\">\n            <h4 className=\"text-muted-foreground text-sm\">placeholder 設定</h4>\n            <Input\n              value={placeholder as string}\n              onChange={e => {\n                onUiSchemaChange?.({\n                  ...uiSchema,\n                  ['ui:placeholder']: e.target.value,\n                });\n              }}\n            />\n          </div>\n        </div>\n      )}\n    </div>\n  );\n};\n",
+      "type": "registry:component",
+      "target": "maxnion/form/select-field/MaxnionSelectField.tsx"
+    },
+    {
+      "path": "registry/maxnion-select-field/devTypes.ts",
+      "content": "import type { JSONSchema7 } from 'json-schema';\nimport type { FieldError } from 'react-hook-form';\n\nexport interface FieldProps {\n  mode: 'builder' | 'edit' | 'readOnly';\n  schema: JSONSchema7;\n  uiSchema?: Record<string, unknown>;\n  value?: unknown;\n  onChange?: (value: unknown) => void;\n  onSchemaChange?: (schema: JSONSchema7) => void;\n  onUiSchemaChange?: (uiSchema: Record<string, unknown>) => void;\n  error?: FieldError;\n}\n\nexport interface FieldConfig {\n  meta: {\n    typeLabel: string;\n    icon?: React.ComponentType<{ className?: string }>;\n  };\n  createInitialSchema: () => JSONSchema7;\n  createInitialUiSchema?: () => Record<string, unknown>;\n  component: React.ComponentType<FieldProps>;\n}\n",
+      "type": "registry:component",
+      "target": "maxnion/form/select-field/devTypes.ts"
+    }
+  ]
+}
