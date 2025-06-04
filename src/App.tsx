@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { MaxnionSelectFieldConfig } from '../registry/maxnion-select-field';
+import { SelectFieldConfig } from '../registry/maxnion/select-field';
 import type { JSONSchema7 } from 'json-schema';
 
 const FIELD_NAME = 'maxnion-select_zY0w';
@@ -23,8 +23,8 @@ export default function Home() {
   const [uiSchema, setUiSchema] = useState<Record<string, unknown>>({});
   const [formData, setFormData] = useState<Record<string, unknown>>({});
 
-  const fieldConfig = MaxnionSelectFieldConfig;
-  const MaxnionSelectField = fieldConfig.component;
+  const fieldConfig = SelectFieldConfig;
+  const SelectField = fieldConfig.component;
   const Icon = fieldConfig.meta.icon;
 
   const handleAddFormField = () => {
@@ -96,7 +96,7 @@ export default function Home() {
             <div className="flex flex-1 flex-col gap-2">
               <h2 className="text-lg font-bold">Builder mode</h2>
               {schema.properties?.[FIELD_NAME] && (
-                <MaxnionSelectField
+                <SelectField
                   mode="builder"
                   schema={schema.properties[FIELD_NAME] as JSONSchema7}
                   uiSchema={uiSchema[FIELD_NAME] as Record<string, unknown>}
@@ -125,7 +125,7 @@ export default function Home() {
             <div className="flex flex-1 flex-col gap-2">
               <h2 className="text-lg font-bold">Edit mode</h2>
               {schema.properties?.[FIELD_NAME] && (
-                <MaxnionSelectField
+                <SelectField
                   mode="edit"
                   value={formData[FIELD_NAME]}
                   onChange={handleFormDataChange}
@@ -137,7 +137,7 @@ export default function Home() {
             <div className="flex flex-1 flex-col gap-2">
               <h2 className="text-lg font-bold">Read only mode</h2>
               {schema.properties?.[FIELD_NAME] && (
-                <MaxnionSelectField
+                <SelectField
                   mode="readOnly"
                   value={formData[FIELD_NAME]}
                   schema={schema.properties[FIELD_NAME] as JSONSchema7}

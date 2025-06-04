@@ -4,25 +4,26 @@
   "homepage": "https://maxnion.com",
   "items": [
     {
-      "name": "maxnion-select-field",
+      "name": "select-field",
       "type": "registry:component",
-      "title": "Maxnion Select Field",
-      "description": "A Maxnion select field component example",
-      "dependencies": ["lucide-react", "react-hook-form", "json-schema"],
+      "title": "Select Field",
+      "description": "A select field component example",
+      "dependencies": ["lucide-react", "react-hook-form"],
+      "devDependencies": ["json-schema"],
       "registryDependencies": ["input", "select", "button"],
       "files": [
         {
-          "path": "registry/maxnion-select-field/index.ts",
+          "path": "registry/maxnion/select-field/index.ts",
           "type": "registry:component",
           "target": "maxnion/form/select-field/index.ts"
         },
         {
-          "path": "registry/maxnion-select-field/MaxnionSelectField.tsx",
+          "path": "registry/maxnion/select-field/SelectField.tsx",
           "type": "registry:component",
-          "target": "maxnion/form/select-field/MaxnionSelectField.tsx"
+          "target": "maxnion/form/select-field/SelectField.tsx"
         },
         {
-          "path": "registry/maxnion-select-field/devTypes.ts",
+          "path": "registry/maxnion/select-field/devTypes.ts",
           "type": "registry:component",
           "target": "maxnion/form/select-field/devTypes.ts"
         }

@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Trash2 } from 'lucide-react';
 import type { FieldProps } from './devTypes';
 
-export const MaxnionSelectField = (props: FieldProps) => {
+export const SelectField = (props: FieldProps) => {
   const {
     mode,
     value,

@@ -1,8 +1,8 @@
 import { List } from 'lucide-react';
-import { MaxnionSelectField } from './MaxnionSelectField';
+import { SelectField } from './SelectField';
 import type { FieldConfig } from './devTypes';
 
-export const MaxnionSelectFieldConfig: FieldConfig = {
+export const SelectFieldConfig: FieldConfig = {
   meta: {
     typeLabel: 'Maxnion Select',
     icon: List,
@@ -16,5 +16,5 @@ export const MaxnionSelectFieldConfig: FieldConfig = {
   createInitialUiSchema: () => ({
     'ui:placeholder': '請選擇一個選項',
   }),
-  component: MaxnionSelectField,
+  component: SelectField,
 };
