@@ -69,7 +69,7 @@ registry/
 在 `index.ts` 中，你需要匯出一個 `FieldConfig` 物件，內容包含：
 
 - `meta`：欄位在 UI 中的顯示設定（如名稱與 icon），會出現在新增欄位下拉選單中
-- `createInitialSchema`：建立欄位時使用的預設 schema（需符合 JSONSchema，可參考 [官方文件](https://json-schema.org/)）
+- `createInitialSchema`：建立欄位時使用的預設 schema（需符合 JSONSchema，目前使用 AJV Validator 預設 Draft-07 版本，可參考[官方文件](https://json-schema.org/)）
 - `createInitialUiSchema`：欄位預設的 UI 行為定義，為選填，型別為 object，常用於傳入如 placeholder、widget 等客製化設定
 - `component`：實際的欄位元件 component
 
