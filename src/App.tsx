@@ -97,7 +97,7 @@ export default function Home() {
               <h2 className="text-lg font-bold">Builder mode</h2>
               {schema.properties?.[FIELD_NAME] && (
                 <SelectField
-                  mode="builder"
+                  mode="build"
                   schema={schema.properties[FIELD_NAME] as JSONSchema7}
                   uiSchema={uiSchema[FIELD_NAME] as Record<string, unknown>}
                   onSchemaChange={handleSchemaChange}
@@ -126,7 +126,7 @@ export default function Home() {
               <h2 className="text-lg font-bold">Edit mode</h2>
               {schema.properties?.[FIELD_NAME] && (
                 <SelectField
-                  mode="edit"
+                  mode="fill"
                   value={formData[FIELD_NAME]}
                   onChange={handleFormDataChange}
                   schema={schema.properties[FIELD_NAME] as JSONSchema7}
@@ -138,7 +138,7 @@ export default function Home() {
               <h2 className="text-lg font-bold">Read only mode</h2>
               {schema.properties?.[FIELD_NAME] && (
                 <SelectField
-                  mode="readOnly"
+                  mode="review"
                   value={formData[FIELD_NAME]}
                   schema={schema.properties[FIELD_NAME] as JSONSchema7}
                   uiSchema={uiSchema[FIELD_NAME] as Record<string, unknown>}

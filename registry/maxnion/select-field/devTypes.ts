@@ -2,7 +2,7 @@ import type { JSONSchema7 } from 'json-schema';
 import type { FieldError } from 'react-hook-form';
 
 export interface FieldProps {
-  mode: 'builder' | 'edit' | 'readOnly';
+  mode: 'build' | 'fill' | 'review';
   schema: JSONSchema7;
   uiSchema?: Record<string, unknown>;
   value?: unknown;

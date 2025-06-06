@@ -36,7 +36,7 @@ export const SelectField = (props: FieldProps) => {
               title: e.target.value,
             });
           }}
-          readOnly={mode === 'edit' || mode === 'readOnly'}
+          readOnly={mode === 'fill' || mode === 'review'}
         />
       </div>
 
@@ -46,7 +46,7 @@ export const SelectField = (props: FieldProps) => {
         <Select
           value={value as string}
           onValueChange={onChange}
-          disabled={mode === 'builder' || mode === 'readOnly'}>
+          disabled={mode === 'build' || mode === 'review'}>
           <SelectTrigger>
             <SelectValue placeholder={(placeholder as string) || '請選擇'} />
           </SelectTrigger>
@@ -61,7 +61,7 @@ export const SelectField = (props: FieldProps) => {
       </div>
 
       {/* schema editor */}
-      {mode === 'builder' && (
+      {mode === 'build' && (
         <div className="flex flex-col gap-4 rounded-lg border p-4">
           <div className="flex flex-col gap-2">
             <h4 className="text-muted-foreground text-sm">選項設定</h4>
