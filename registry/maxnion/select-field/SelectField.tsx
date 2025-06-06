@@ -1,3 +1,22 @@
+/**
+ * This is your custom form field component.
+ *
+ * You will receive the following props:
+ * - `mode`: Indicates which rendering mode the field should follow:
+ *    - `build`: Render a UI to configure the field schema and UI schema.
+ *    - `fill`: Render an interactive input (e.g., select, input) for the user to enter a value.
+ *    - `review`: Render a read-only version of the field for review or confirmation.
+ * 
+ * - `schema`: The JSON Schema object that defines this field.
+ * - `uiSchema`: An optional object for custom UI behavior.
+ * - `value`: The current field value (for fill/review modes).
+ * - `onChange`: Callback to update the value (fill mode only).
+ * - `onSchemaChange` / `onUiSchemaChange`: Callbacks used to update schema during build mode.
+ * - `error`: A `FieldError` object from react-hook-form. Use this to display validation error messages (in fill mode).
+ *
+ * 💡 Note: Use shadcn/ui components for consistent styling.
+ */
+
 import { Input } from '@/components/ui/input';
 import {
   Select,

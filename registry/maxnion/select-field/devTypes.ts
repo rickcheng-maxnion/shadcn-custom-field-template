@@ -1,3 +1,12 @@
+/**
+ * 📌 This file contains core type definitions used by our form system.
+ * Please do not modify its content directly.
+ *
+ * If you need to make changes, feel free to reach out and discuss with us.
+ * In the future, this will be replaced by a shared package import.
+ */
+
+
 import type { JSONSchema7 } from 'json-schema';
 import type { FieldError } from 'react-hook-form';
 
